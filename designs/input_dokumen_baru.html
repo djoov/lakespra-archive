@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tambah Buku | Lakespra Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "text-secondary": "#64748B",
+                    "on-primary-fixed": "#131b2e",
+                    "tertiary-fixed": "#dce1ff",
+                    "on-secondary-container": "#006f66",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-lowest": "#ffffff",
+                    "text-primary": "#1E293B",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#00164e",
+                    "surface-tint": "#565e74",
+                    "on-surface": "#191c1e",
+                    "secondary": "#006a61",
+                    "border-muted": "#E2E8F0",
+                    "on-secondary-fixed-variant": "#005049",
+                    "danger": "#DC2626",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#86f2e4",
+                    "background": "#f7f9fb",
+                    "on-surface-variant": "#45464d",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-high": "#e6e8ea",
+                    "on-error": "#ffffff",
+                    "primary": "#000000",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-container": "#7c839b",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#89f5e7",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#6780d3",
+                    "inverse-primary": "#bec6e0",
+                    "outline": "#76777d",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "success": "#059669",
+                    "tertiary": "#000000",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary-fixed": "#00164e",
+                    "primary-fixed": "#dae2fd",
+                    "primary-container": "#131b2e",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "surface-container": "#eceef0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "max-width": "1440px",
+                    "margin-desktop": "40px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "code-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "title-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #0d9488 !important; /* Teal-600 */
+            box-shadow: 0 0 0 1px #0d9488;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-text-primary min-h-screen flex">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky top-0 bg-surface-container-lowest border-r border-border-muted p-gutter z-50">
+<div class="mb-12">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">Lakespra Archive</span>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<!-- Profile Section -->
+<div class="flex items-center gap-3 mb-8 px-2">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a military medical administrator in a clean, high-contrast setting. The subject is wearing a subtle uniform, reflecting authority and precision. The lighting is soft yet professional, against a minimalist corporate background with neutral tones and teal accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs3XDzquh93dt2x47RDYWLEFsFaSxonHJ-XkTN-6kIm8VepPz2AJbhYts34hJAwZ3Cqc_BSuvFfFHaeTzzzbCNRWsOY2f-ZGT8K8942QS0LSyoQTVrWw_oVEhZTXaqaFBHPHrHNlULrlsNMUY4MgmtXp23oqYXV2NNfx2BwkGtXTIme7S1WFufvn1Ac7r7KgWmJCGs3C0eLgNAjJBezwzL6AOBekVMlAQfBn5ecdH6c0YSQtrTb5K8ie6QfH6Q4HxPLMJZAdgO4hU"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-text-primary">Halo, Admin Urtu</p>
+<p class="text-xs text-text-secondary">Operational Personnel</p>
+</div>
+</div>
+<!-- Nav Links -->
+<a class="flex items-center gap-3 p-3 text-text-secondary hover:bg-surface-container-high transition-colors rounded-xl font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 p-3 bg-secondary-container text-on-secondary-container rounded-xl font-label-md text-label-md scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined">add_box</span>
+                Tambah Buku
+            </a>
+<a class="flex items-center gap-3 p-3 text-text-secondary hover:bg-surface-container-high transition-colors rounded-xl font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">upload_file</span>
+                Import CSV
+            </a>
+</div>
+<div class="mt-auto border-t border-border-muted pt-4">
+<button class="flex items-center gap-3 p-3 text-danger hover:bg-surface-container-high transition-colors rounded-xl w-full font-label-md text-label-md">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </button>
+</div>
+</aside>
+<div class="flex-grow flex flex-col min-w-0 bg-background">
+<!-- TopAppBar (Shared Component) -->
+<header class="flex justify-between items-center px-gutter py-4 w-full bg-surface">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:text-primary transition-colors opacity-80 active:opacity-100">arrow_back</button>
+<h1 class="font-headline-lg text-headline-lg text-primary">Archive Dashboard</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-text-secondary font-label-md text-label-md">Lakespra Admin</span>
+<button class="text-primary hover:text-primary transition-colors font-label-md text-label-md">Logout</button>
+</div>
+</header>
+<!-- Main Content (Canvas) -->
+<main class="flex-grow px-margin-desktop py-8 max-w-max-width mx-auto w-full">
+<div class="mb-8">
+<h2 class="font-title-md text-title-md text-text-primary">Registrasi Buku Baru</h2>
+<p class="text-text-secondary font-body-md text-body-md">Lengkapi data arsip fisik di bawah ini untuk disimpan ke sistem database pusat.</p>
+</div>
+<!-- Bento Form Container -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Document Identity & Physical Location -->
+<div class="lg:col-span-7 flex flex-col gap-gutter">
+<!-- Identity Section -->
+<section class="bg-surface-container-lowest border border-border-muted rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 border-b border-border-muted pb-4">
+<span class="material-symbols-outlined text-secondary">description</span>
+<h3 class="font-label-md text-label-md text-text-primary uppercase tracking-wider">Identitas Dokumen</h3>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary">Nomor Buku</label>
+<input class="bg-surface-container-low border-border-muted rounded-lg px-4 py-3 font-code-sm text-code-sm placeholder:text-text-secondary/50" placeholder="LKS-AR-2024-001" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary">Kategori</label>
+<div class="relative group">
+<select class="appearance-none w-full bg-surface-container-low border-border-muted rounded-lg px-4 py-3 text-body-md">
+<option disabled="" selected="" value="">Pilih Kategori...</option>
+<option>Rekam Medik AU</option>
+<option>Laporan Personel</option>
+<option>Administrasi Umum</option>
+<option>Logistik Kesehatan</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3.5 text-text-secondary pointer-events-none group-focus-within:rotate-180 transition-transform">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary">Judul Buku / Nama Arsip</label>
+<input class="bg-surface-container-low border-border-muted rounded-lg px-4 py-3 text-body-md placeholder:text-text-secondary/50" placeholder="Contoh: Laporan Tahunan Kesehatan Penerbang 2023" type="text"/>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="bg-surface-container-lowest border border-border-muted rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6 border-b border-border-muted pb-4">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<h3 class="font-label-md text-label-md text-text-primary uppercase tracking-wider">Lokasi Fisik</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary">Lemari (Storage Unit)</label>
+<div class="relative">
+<select class="appearance-none w-full bg-surface-container-low border-border-muted rounded-lg px-4 py-3 text-body-md">
+<option disabled="" selected="" value="">Pilih Lemari...</option>
+<option>Unit Alpha-01</option>
+<option>Unit Alpha-02</option>
+<option>Unit Bravo-Secure</option>
+<option>Vault-01</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3.5 text-text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-text-primary">Rak / Box Number</label>
+<div class="relative">
+<select class="appearance-none w-full bg-surface-container-low border-border-muted rounded-lg px-4 py-3 text-body-md">
+<option disabled="" selected="" value="">Pilih Rak...</option>
+<option>Rak 01 - Atas</option>
+<option>Rak 02</option>
+<option>Rak 03</option>
+<option>Box BX-202</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3.5 text-text-secondary pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Image Upload -->
+<div class="lg:col-span-5">
+<section class="bg-surface-container-lowest border border-border-muted rounded-xl p-6 h-full flex flex-col">
+<div class="flex items-center gap-2 mb-6 border-b border-border-muted pb-4">
+<span class="material-symbols-outlined text-secondary">photo_camera</span>
+<h3 class="font-label-md text-label-md text-text-primary uppercase tracking-wider">Foto Sampul Depan</h3>
+</div>
+<div class="flex-grow flex flex-col">
+<!-- Preview Area -->
+<div class="relative border-2 border-dashed border-border-muted rounded-xl flex-grow flex flex-col items-center justify-center p-8 bg-surface-container-low transition-all hover:bg-surface-container hover:border-secondary cursor-pointer group mb-4">
+<div class="w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-4xl">add_a_photo</span>
+</div>
+<p class="text-text-primary font-label-md text-label-md">Take Photo / Upload</p>
+<p class="text-text-secondary text-xs text-center mt-2 max-w-[200px]">Gunakan kamera tablet atau upload file .jpg / .png (Maks. 5MB)</p>
+<!-- Decorative corners for camera-like feel -->
+<div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-border-muted"></div>
+<div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-border-muted"></div>
+<div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-border-muted"></div>
+<div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-border-muted"></div>
+</div>
+<!-- Small Previews/Status -->
+<div class="flex items-center gap-3 p-4 bg-secondary/5 rounded-lg border border-secondary/20">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-xs text-on-secondary-container">Pastikan pencahayaan cukup dan nomor registrasi terlihat jelas pada sampul buku.</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer Action Buttons -->
+<div class="mt-8 flex flex-col sm:flex-row justify-end items-center gap-4 py-6 border-t border-border-muted">
+<button class="w-full sm:w-auto px-10 py-3 rounded-lg border border-border-muted text-text-primary hover:bg-surface-container-high transition-colors font-label-md text-label-md tracking-wider">
+                    BATAL
+                </button>
+<button class="w-full sm:w-auto px-12 py-3 rounded-lg bg-primary text-on-primary hover:opacity-90 transition-opacity font-label-md text-label-md tracking-wider flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">save</span>
+                    SIMPAN DATA
+                </button>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation Shell (BottomNavBar Logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-border-muted flex justify-around items-center py-3 z-50">
+<a class="flex flex-col items-center gap-1 text-text-secondary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_box</span>
+<span class="text-[10px] font-label-md">Tambah</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-secondary" href="#">
+<span class="material-symbols-outlined">upload_file</span>
+<span class="text-[10px] font-label-md">Import</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-secondary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-label-md">Profil</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for form feedback
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('change', () => {
+                if(input.value) {
+                    input.classList.add('border-secondary/50');
+                }
+            });
+        });
+
+        // Simulate save button interaction
+        const saveBtn = document.querySelector('button.bg-primary');
+        saveBtn.addEventListener('click', function() {
+            this.classList.add('scale-95');
+            setTimeout(() => this.classList.remove('scale-95'), 150);
+            
+            // Logic for a real system would go here
+            console.log("Saving book data...");
+        });
+    </script>
+</body></html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Lakespra Archive | Public Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "text-secondary": "#64748B",
+                    "on-primary-fixed": "#131b2e",
+                    "tertiary-fixed": "#dce1ff",
+                    "on-secondary-container": "#006f66",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-lowest": "#ffffff",
+                    "text-primary": "#1E293B",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#00164e",
+                    "surface-tint": "#565e74",
+                    "on-surface": "#191c1e",
+                    "secondary": "#006a61",
+                    "border-muted": "#E2E8F0",
+                    "on-secondary-fixed-variant": "#005049",
+                    "danger": "#DC2626",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#86f2e4",
+                    "background": "#f7f9fb",
+                    "on-surface-variant": "#45464d",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-high": "#e6e8ea",
+                    "on-error": "#ffffff",
+                    "primary": "#000000",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-container": "#7c839b",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#89f5e7",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#6780d3",
+                    "inverse-primary": "#bec6e0",
+                    "outline": "#76777d",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "success": "#059669",
+                    "tertiary": "#000000",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary-fixed": "#00164e",
+                    "primary-fixed": "#dae2fd",
+                    "primary-container": "#131b2e",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "surface-container": "#eceef0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "max-width": "1440px",
+                    "margin-desktop": "40px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "code-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "title-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        body {
+            background-color: #f7f9fb;
+            color: #1E293B;
+            font-family: 'Inter', sans-serif;
+        }
+        .search-focus:focus-within {
+            border-color: #006a61;
+            box-shadow: 0 0 0 4px rgba(0, 106, 97, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest border-b border-border-muted sticky top-0 z-50">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-max-width mx-auto h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+<span class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary">Lakespra Archive</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary py-2 transition-transform active:scale-95" href="#">Search</a>
+<a class="text-text-secondary hover:bg-surface-container-low px-3 py-2 rounded-lg transition-colors" href="#">Guidelines</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-xl font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-95">Login
+                </button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden p-2 text-text-secondary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative bg-surface overflow-hidden border-b border-border-muted">
+<div class="absolute inset-0 opacity-5 pointer-events-none">
+<div class="w-full h-full bg-repeat opacity-20" data-alt="A sophisticated medical and aeronautical research pattern, featuring blueprint-style technical drawings of medical equipment and aircraft silhouettes in a clean, minimalist blue and white aesthetic. The background is subtle and professional, suggesting a deep archival history of military medical expertise." style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuDdgnWFl3OTKsmD9QQw8NvmPCs7IH5M0rtoXGvRumDVkOONg2LHin0VXKmf9UHMwcx5-buJKYh-lAcQiYjRBF1BjG1IZ1bE82iU3d6vKKlRIloJTBLLSj2S-vZDMXLsBKBWog9MK4dRid4_zJRanTI5iWhl9_WeActTVTqS3cOZfRPV63Tjw_l4hrLgNyaZMIl4rwdF8xMt4LXk5PCt03YQj6s0m8pZoR9_GQzMTbI_RZ5KO6qCKx6Z4BqoTXiP8p5zQfjrWuYQxrg&quot;);"></div>
+</div>
+<div class="relative max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/30 text-on-secondary-container rounded-full mb-6 border border-secondary/20">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Arsip Kedokteran Penerbangan &amp; Antariksa</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary mb-6">
+                PETA DIGITAL ARSIP <br class="hidden md:block"> INTERNAL LAKESPRA
+            </h1>
+<p class="font-body-lg text-body-lg text-text-secondary mb-12 max-w-2xl mx-auto">
+                Temukan lokasi fisik dokumen kesehatan, peraturan teknis, dan surat keputusan dengan presisi. Sistem inventarisasi terpadu untuk efisiensi operasional personil.
+            </p>
+<!-- Search Bar -->
+<div class="relative max-w-2xl mx-auto">
+<div class="bg-surface-container-lowest border border-border-muted p-1.5 rounded-2xl shadow-sm search-focus transition-all flex items-center">
+<div class="pl-4 pr-2 text-text-secondary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 py-3 font-body-md text-body-md text-primary" placeholder="Cari nomor buku, judul dokumen, atau tahun..." type="text">
+<button class="hidden md:block bg-secondary text-on-secondary px-6 py-2.5 rounded-xl font-label-md text-label-md hover:opacity-90 transition-opacity mr-1">
+                        Cari Arsip
+                    </button>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="flex flex-wrap justify-center gap-3 mt-8">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-colors">Semua</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-border-muted text-text-secondary hover:bg-surface-container-highest font-label-md text-label-md transition-colors">Petunjuk Teknis</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-border-muted text-text-secondary hover:bg-surface-container-highest font-label-md text-label-md transition-colors">Surat Keputusan</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high border border-border-muted text-text-secondary hover:bg-surface-container-highest font-label-md text-label-md transition-colors">Lain</button>
+</div>
+</div>
+</section>
+<!-- Main Results Content -->
+<main class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-title-md text-title-md text-primary">Hasil Pencarian (120 Dokumen)</h2>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-text-secondary">Urutkan:</span>
+<select class="bg-transparent border-none font-label-md text-label-md text-primary focus:ring-0 cursor-pointer">
+<option>Terbaru</option>
+<option>Tahun (A-Z)</option>
+<option>Nomor Buku</option>
+</select>
+</div>
+</div>
+<!-- Archive Results Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Result Card 1 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl hover:border-secondary/30 transition-all group overflow-hidden flex flex-col">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary/10 text-on-secondary-container px-3 py-1 rounded-lg font-code-sm text-code-sm uppercase">PETUNJUK TEKNIS</span>
+<span class="font-code-sm text-code-sm text-text-secondary bg-surface-container px-2 py-1 rounded">2007</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-2 line-clamp-2">PENYUSUNAN RENCANA PELAKSANAAN KEGIATAN</h3>
+<p class="font-label-md text-label-md text-text-secondary mb-6">BUKU NO. 150</p>
+<!-- Physical Location Badge -->
+<div class="bg-surface rounded-lg p-4 border border-dashed border-border-muted">
+<p class="font-label-md text-label-md text-text-secondary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            LOKASI FISIK
+                        </p>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-code-sm text-code-sm text-text-secondary">LEMARI</p>
+<p class="font-title-md text-title-md text-primary">LEMARI B</p>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-code-sm text-text-secondary">RAK / BOX</p>
+<p class="font-title-md text-title-md text-primary text-on-secondary-container font-bold">RAK 3 / BOX MEDIS</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-t border-border-muted text-text-secondary font-label-md text-label-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors flex items-center justify-center gap-2">
+                    Detail Dokumen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Result Card 2 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl hover:border-secondary/30 transition-all group overflow-hidden flex flex-col">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary/10 text-on-secondary-container px-3 py-1 rounded-lg font-code-sm text-code-sm uppercase">SURAT KEPUTUSAN</span>
+<span class="font-code-sm text-code-sm text-text-secondary bg-surface-container px-2 py-1 rounded">2015</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-2 line-clamp-2">PENETAPAN STANDAR PEMERIKSAAN KESEHATAN PENERBANG</h3>
+<p class="font-label-md text-label-md text-text-secondary mb-6">BUKU NO. 422</p>
+<div class="bg-surface rounded-lg p-4 border border-dashed border-border-muted">
+<p class="font-label-md text-label-md text-text-secondary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            LOKASI FISIK
+                        </p>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-code-sm text-code-sm text-text-secondary">LEMARI</p>
+<p class="font-title-md text-title-md text-primary">LEMARI A</p>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-code-sm text-text-secondary">RAK / BOX</p>
+<p class="font-title-md text-title-md text-primary text-on-secondary-container font-bold">RAK 1 / BOX OPS</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-t border-border-muted text-text-secondary font-label-md text-label-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors flex items-center justify-center gap-2">
+                    Detail Dokumen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Result Card 3 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl hover:border-secondary/30 transition-all group overflow-hidden flex flex-col">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary/10 text-on-secondary-container px-3 py-1 rounded-lg font-code-sm text-code-sm uppercase">LAIN</span>
+<span class="font-code-sm text-code-sm text-text-secondary bg-surface-container px-2 py-1 rounded">2021</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-2 line-clamp-2">LAPORAN EVALUASI TAHUNAN FASILITAS HIPERBARIK</h3>
+<p class="font-label-md text-label-md text-text-secondary mb-6">BUKU NO. 889</p>
+<div class="bg-surface rounded-lg p-4 border border-dashed border-border-muted">
+<p class="font-label-md text-label-md text-text-secondary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            LOKASI FISIK
+                        </p>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-code-sm text-code-sm text-text-secondary">LEMARI</p>
+<p class="font-title-md text-title-md text-primary">LEMARI C</p>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-code-sm text-text-secondary">RAK / BOX</p>
+<p class="font-title-md text-title-md text-primary text-on-secondary-container font-bold">RAK 5 / BOX TEKNIS</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-t border-border-muted text-text-secondary font-label-md text-label-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors flex items-center justify-center gap-2">
+                    Detail Dokumen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Card 4 (Repeat pattern for density) -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl hover:border-secondary/30 transition-all group overflow-hidden flex flex-col">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary/10 text-on-secondary-container px-3 py-1 rounded-lg font-code-sm text-code-sm uppercase">PETUNJUK TEKNIS</span>
+<span class="font-code-sm text-code-sm text-text-secondary bg-surface-container px-2 py-1 rounded">2012</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-2 line-clamp-2">SOP EVAKUASI MEDIK UDARA SKALA NASIONAL</h3>
+<p class="font-label-md text-label-md text-text-secondary mb-6">BUKU NO. 301</p>
+<div class="bg-surface rounded-lg p-4 border border-dashed border-border-muted">
+<p class="font-label-md text-label-md text-text-secondary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            LOKASI FISIK
+                        </p>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-code-sm text-code-sm text-text-secondary">LEMARI</p>
+<p class="font-title-md text-title-md text-primary">LEMARI B</p>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-code-sm text-text-secondary">RAK / BOX</p>
+<p class="font-title-md text-title-md text-primary text-on-secondary-container font-bold">RAK 2 / BOX MEDIS</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-t border-border-muted text-text-secondary font-label-md text-label-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors flex items-center justify-center gap-2">
+                    Detail Dokumen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl hover:border-secondary/30 transition-all group overflow-hidden flex flex-col">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary/10 text-on-secondary-container px-3 py-1 rounded-lg font-code-sm text-code-sm uppercase">SURAT KEPUTUSAN</span>
+<span class="font-code-sm text-code-sm text-text-secondary bg-surface-container px-2 py-1 rounded">1998</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-2 line-clamp-2">PEDOMAN ORGANISASI DAN TATA KERJA LAKESPRA</h3>
+<p class="font-label-md text-label-md text-text-secondary mb-6">BUKU NO. 012</p>
+<div class="bg-surface rounded-lg p-4 border border-dashed border-border-muted">
+<p class="font-label-md text-label-md text-text-secondary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            LOKASI FISIK
+                        </p>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-code-sm text-code-sm text-text-secondary">LEMARI</p>
+<p class="font-title-md text-title-md text-primary">LEMARI D</p>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-code-sm text-text-secondary">RAK / BOX</p>
+<p class="font-title-md text-title-md text-primary text-on-secondary-container font-bold">RAK 4 / BOX ARSIP</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-t border-border-muted text-text-secondary font-label-md text-label-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors flex items-center justify-center gap-2">
+                    Detail Dokumen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest border border-border-muted rounded-xl hover:border-secondary/30 transition-all group overflow-hidden flex flex-col">
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary/10 text-on-secondary-container px-3 py-1 rounded-lg font-code-sm text-code-sm uppercase">PETUNJUK TEKNIS</span>
+<span class="font-code-sm text-code-sm text-text-secondary bg-surface-container px-2 py-1 rounded">2018</span>
+</div>
+<h3 class="font-title-md text-title-md text-primary mb-2 line-clamp-2">MANUAL PROSEDUR UJI KOMPETENSI PERSONEL KESEHATAN</h3>
+<p class="font-label-md text-label-md text-text-secondary mb-6">BUKU NO. 552</p>
+<div class="bg-surface rounded-lg p-4 border border-dashed border-border-muted">
+<p class="font-label-md text-label-md text-text-secondary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            LOKASI FISIK
+                        </p>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-code-sm text-code-sm text-text-secondary">LEMARI</p>
+<p class="font-title-md text-title-md text-primary">LEMARI B</p>
+</div>
+<div class="text-right">
+<p class="font-code-sm text-code-sm text-text-secondary">RAK / BOX</p>
+<p class="font-title-md text-title-md text-primary text-on-secondary-container font-bold">RAK 1 / BOX MEDIS</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 border-t border-border-muted text-text-secondary font-label-md text-label-md group-hover:bg-secondary group-hover:text-on-secondary transition-colors flex items-center justify-center gap-2">
+                    Detail Dokumen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-center items-center mt-16 gap-2">
+<button class="p-2 rounded-lg border border-border-muted hover:bg-surface-container-low text-text-secondary">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-label-md text-label-md">1</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-low text-text-secondary font-label-md text-label-md">2</button>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-low text-text-secondary font-label-md text-label-md">3</button>
+<span class="px-2 text-text-secondary">...</span>
+<button class="w-10 h-10 rounded-lg hover:bg-surface-container-low text-text-secondary font-label-md text-label-md">20</button>
+<button class="p-2 rounded-lg border border-border-muted hover:bg-surface-container-low text-text-secondary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-border-muted py-12 mt-20">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-2">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+<span class="font-headline-lg text-title-md font-bold text-primary">Lakespra Saryanto</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary max-w-sm mb-6">
+                        Lembaga Kesehatan Penerbangan dan Antariksa dr. Saryanto (Lakespra Saryanto) adalah pusat keunggulan kesehatan penerbangan di Indonesia.
+                    </p>
+<p class="font-code-sm text-code-sm text-text-secondary uppercase">© 2024 Arsip Digital Lakespra. All Rights Reserved.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-wider">Navigasi</h4>
+<ul class="space-y-2">
+<li class=""><a class="font-body-md text-body-md text-text-secondary hover:text-primary" href="#">Beranda</a></li>
+<li class=""><a class="font-body-md text-body-md text-text-secondary hover:text-primary" href="#">Tentang Kami</a></li>
+<li class=""><a class="font-body-md text-body-md text-text-secondary hover:text-primary" href="#">Pusat Bantuan</a></li>
+<li class=""><a class="font-body-md text-body-md text-text-secondary hover:text-primary" href="#">Kebijakan Privasi</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-wider">Kontak Personil</h4>
+<p class="font-body-md text-body-md text-text-secondary mb-2">Piket Arsip (Ext. 241)</p>
+<p class="font-body-md text-body-md text-text-secondary">Jl. M.T. Haryono Kav. 45, Jakarta Selatan</p>
+<div class="mt-6 p-4 bg-surface rounded-lg border border-border-muted flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary">shield</span>
+<p class="font-code-sm text-code-sm text-text-secondary">Sistem ini hanya dapat diakses penuh oleh personil resmi dengan kredensial aktif.</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- Micro-interactions Script -->
+<script>
+        // Simple search feedback
+        const searchInput = document.querySelector('input[type="text"]');
+        const resultsHeader = document.querySelector('h2');
+        
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            if(val.length > 2) {
+                // Mock behavior: UI remains static but would normally trigger dynamic search
+                console.log(`Searching for: ${val}`);
+            }
+        });
+
+        // Tab interactions
+        const chips = document.querySelectorAll('button.rounded-full');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('bg-primary', 'text-on-primary');
+                    c.classList.add('bg-surface-container-high', 'text-text-secondary');
+                });
+                chip.classList.add('bg-primary', 'text-on-primary');
+                chip.classList.remove('bg-surface-container-high', 'text-text-secondary');
+            });
+        });
+    </script>
+
+
+</body></html>

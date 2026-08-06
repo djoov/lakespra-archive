@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mass Import CSV - Lakespra Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "text-secondary": "#64748B",
+                    "on-primary-fixed": "#131b2e",
+                    "tertiary-fixed": "#dce1ff",
+                    "on-secondary-container": "#006f66",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-lowest": "#ffffff",
+                    "text-primary": "#1E293B",
+                    "on-primary": "#ffffff",
+                    "tertiary-container": "#00164e",
+                    "surface-tint": "#565e74",
+                    "on-surface": "#191c1e",
+                    "secondary": "#006a61",
+                    "border-muted": "#E2E8F0",
+                    "on-secondary-fixed-variant": "#005049",
+                    "danger": "#DC2626",
+                    "surface": "#f7f9fb",
+                    "secondary-container": "#86f2e4",
+                    "background": "#f7f9fb",
+                    "on-surface-variant": "#45464d",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-high": "#e6e8ea",
+                    "on-error": "#ffffff",
+                    "primary": "#000000",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-container": "#7c839b",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed": "#89f5e7",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#6780d3",
+                    "inverse-primary": "#bec6e0",
+                    "outline": "#76777d",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed-dim": "#b6c4ff",
+                    "success": "#059669",
+                    "tertiary": "#000000",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary-fixed": "#00164e",
+                    "primary-fixed": "#dae2fd",
+                    "primary-container": "#131b2e",
+                    "on-tertiary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary-fixed-variant": "#264191",
+                    "surface-container": "#eceef0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "max-width": "1440px",
+                    "margin-desktop": "40px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "code-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "title-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "code-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f7f9fb;
+            color: #1E293B;
+            font-family: 'Inter', sans-serif;
+        }
+        .archive-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky top-0 bg-surface-container-lowest border-r border-border-muted p-gutter z-50">
+<div class="mb-10">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">Lakespra Archive</span>
+</div>
+<div class="flex items-center gap-3 mb-8 p-3 bg-surface-container-low rounded-xl">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">A</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md text-primary truncate">Halo, Admin Urtu</p>
+<p class="font-body-md text-text-secondary text-xs truncate">Operational Personnel</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 text-text-secondary hover:bg-surface-container-high transition-colors font-label-md text-label-md rounded-xl active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Tambah Buku -->
+<a class="flex items-center gap-3 px-4 py-3 text-text-secondary hover:bg-surface-container-high transition-colors font-label-md text-label-md rounded-xl active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span>Tambah Buku</span>
+</a>
+<!-- Import CSV (ACTIVE) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-xl active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+<span>Import CSV</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-border-muted pt-4">
+<button class="w-full flex items-center gap-3 px-4 py-3 text-danger hover:bg-surface-container-high transition-colors font-label-md text-label-md rounded-xl active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- TopAppBar (Authority: JSON) -->
+<header class="flex justify-between items-center px-gutter py-4 w-full bg-surface">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:text-primary transition-colors active:opacity-80">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg text-primary">Archive Dashboard</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-label-md text-primary">Admin Urtu</p>
+<p class="font-body-md text-text-secondary text-xs">Urtu Station</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-border-muted">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a military medical administrative officer in a clean, high-contrast office setting. The lighting is bright and systematic, reflecting a sterile and efficient environment. The officer has a calm, authoritative expression, wearing a crisp uniform that aligns with the Lakespra Archive's corporate and systematic visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnS6mLDNCQHL-kOCuTdzJsY8T_cJ3EKpw_5qyzmjIM1NG6d3b7eFoK9B3M6BMxCE8kHB-_8Wxw_d2AQZJOjI5kNG-TBMj9A40cf91YMazSfi3DbnxSNcYGd8sBYZMX7bUgLxBadkp-U2ZWokVKkFGp5eZBIjlOcKvQVCXv4lMDtgIINSi8TmY18HrobJHcza5Csm2DTrVdiNtacY2GSbnZWXm_f20-K_a8iG86MBMFjq3YszbMIs_6sKNhpBTALCrbKjQU3mscWUg"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 p-margin-mobile md:p-margin-desktop max-w-max-width mx-auto w-full">
+<div class="mb-10">
+<h2 class="font-display-lg text-display-lg text-primary mb-2">IMPORT DATA MASSAL (.CSV)</h2>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-3xl">Lakukan pembaruan basis data arsip secara efisien dengan mengunggah berkas terstruktur. Pastikan format kolom sesuai dengan standarisasi Lakespra Archive.</p>
+</div>
+<!-- Bento Layout for Import Flow -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Instructions & Structure -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Steps Card -->
+<div class="archive-card p-8 rounded-xl">
+<h3 class="font-title-md text-title-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+                            Langkah Persiapan
+                        </h3>
+<ol class="space-y-6">
+<li class="flex gap-4">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold font-label-md">1</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Unduh Template</p>
+<p class="font-body-md text-body-md text-text-secondary mt-1">Gunakan berkas .csv standar untuk meminimalisir kesalahan sistem.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold font-label-md">2</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Validasi Data</p>
+<p class="font-body-md text-body-md text-text-secondary mt-1">Pastikan [Tahun] berupa angka dan [Nomor Buku] unik.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold font-label-md">3</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Unggah Berkas</p>
+<p class="font-body-md text-body-md text-text-secondary mt-1">Drag file ke area unggah dan tekan tombol konfirmasi.</p>
+</div>
+</li>
+</ol>
+</div>
+<!-- Column Guide Card -->
+<div class="archive-card p-8 rounded-xl bg-surface-container-low border-none">
+<h3 class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Required Columns</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-white border border-border-muted rounded font-code-sm text-code-sm text-primary">[Kategori]</span>
+<span class="px-3 py-1 bg-white border border-border-muted rounded font-code-sm text-code-sm text-primary">[Nomor Buku]</span>
+<span class="px-3 py-1 bg-white border border-border-muted rounded font-code-sm text-code-sm text-primary">[Judul]</span>
+<span class="px-3 py-1 bg-white border border-border-muted rounded font-code-sm text-code-sm text-primary">[Tahun]</span>
+<span class="px-3 py-1 bg-white border border-border-muted rounded font-code-sm text-code-sm text-primary">[Lemari]</span>
+<span class="px-3 py-1 bg-white border border-border-muted rounded font-code-sm text-code-sm text-primary">[Rak/Box]</span>
+</div>
+</div>
+</div>
+<!-- Right: Dropzone -->
+<div class="lg:col-span-8">
+<div class="archive-card h-full p-gutter rounded-xl flex flex-col">
+<div class="flex-1 border-2 border-dashed border-border-muted rounded-xl bg-surface-bright flex flex-col items-center justify-center text-center p-12 transition-all hover:border-secondary hover:bg-white group cursor-pointer" id="dropzone">
+<div class="w-20 h-20 rounded-full bg-secondary-container/30 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-secondary text-5xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-2">Seret &amp; Lepas Berkas</h3>
+<p class="font-body-lg text-body-lg text-text-secondary mb-8">Format yang didukung: .csv (Maksimal 25MB)</p>
+<input accept=".csv" class="hidden" id="file-input" type="file"/>
+<button class="px-8 py-3 bg-white border border-border-muted text-primary font-label-md text-label-md rounded-xl hover:bg-surface-container-low transition-all active:scale-95 shadow-sm" onclick="document.getElementById('file-input').click()">
+                                Pilih File dari Perangkat
+                            </button>
+</div>
+<div class="mt-8 flex items-center justify-between p-6 bg-surface-container-lowest rounded-xl border border-border-muted border-dashed">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-success/10 text-success rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary" id="filename-display">Belum ada file terpilih</p>
+<p class="font-body-md text-text-secondary text-xs" id="filesize-display">Silakan unggah berkas .csv Anda</p>
+</div>
+</div>
+<button class="bg-primary text-white px-10 py-4 rounded-xl font-label-md text-label-md hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
+                                IMPORT SEKARANG
+                                <span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Context Info Footer -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="flex items-start gap-4 p-4">
+<span class="material-symbols-outlined text-text-secondary" data-icon="verified_user">verified_user</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Data Integrity</p>
+<p class="font-body-md text-text-secondary text-sm">Sistem melakukan validasi otomatis terhadap struktur kolom sebelum pemrosesan.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4">
+<span class="material-symbols-outlined text-text-secondary" data-icon="history">history</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Log Aktivitas</p>
+<p class="font-body-md text-text-secondary text-sm">Setiap impor massal dicatat dalam log sistem untuk kebutuhan audit operasional.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4">
+<span class="material-symbols-outlined text-text-secondary" data-icon="support_agent">support_agent</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Bantuan Teknis</p>
+<p class="font-body-md text-text-secondary text-sm">Hubungi tim IT Lakespra jika menemui kendala pada format CSV tertentu.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions for Drag and Drop
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file-input');
+        const fileNameDisplay = document.getElementById('filename-display');
+        const fileSizeDisplay = document.getElementById('filesize-display');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, () => {
+                dropzone.classList.add('border-secondary', 'bg-white', 'ring-4', 'ring-secondary/10');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, () => {
+                dropzone.classList.remove('border-secondary', 'bg-white', 'ring-4', 'ring-secondary/10');
+            }, false);
+        });
+
+        dropzone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.name.endsWith('.csv')) {
+                    fileNameDisplay.textContent = file.name;
+                    fileSizeDisplay.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+                    fileNameDisplay.classList.add('text-success');
+                } else {
+                    alert('Mohon unggah berkas dalam format .CSV');
+                }
+            }
+        }
+    </script>
+</body></html>
